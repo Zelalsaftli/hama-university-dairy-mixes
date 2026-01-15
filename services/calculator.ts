@@ -25,8 +25,11 @@ export const calculateRequirements = (params: CowParameters): Nutrients => {
   
   const meMaint = (meMaintCoeff * w075) * activityFactor;
   const cpMaint = (4.1 * w075) * activityFactor; 
-  const caMaint = 0.0154 * weight;
-  const pMaint = 0.0125 * weight;
+  
+  // Maintenance calculation for Ca & P updated based on more standard NRC (2001) linear coefficients for accuracy.
+  // Old values were: Ca = 0.0154 * weight, P = 0.0125 * weight, which were significant underestimates.
+  const caMaint = 0.031 * weight;
+  const pMaint = 0.038 * weight;
 
   me += meMaint;
   cp += cpMaint;
